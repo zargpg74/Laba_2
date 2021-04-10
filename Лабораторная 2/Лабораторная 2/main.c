@@ -27,7 +27,7 @@ void main()
 	int len = 0, n = 0;//len - счетчик для строки, n - количество строк
 	int* mass_len = NULL;//Массив длинн строк
 	symbol = fgetc(book);
-	while (symbol != '!')
+	while (symbol != '/')
 	{
 		if (symbol != '\n')
 		{
@@ -47,7 +47,7 @@ void main()
 			}
 
 			mass_len = (int*)realloc(mass_len, (n + 1) * sizeof(int));
-			mass_len = len;
+			mass_len[n] = len;
 
 			mass_str = (char**)realloc(mass_str, (n + 1) * sizeof(char*));
 			mass_str[n] = (char*)malloc(mass_str, len * sizeof(char));
@@ -62,6 +62,30 @@ void main()
 		}
 
 		symbol = fgetc(book);
+
+		if (symbol == '/')
+		{
+			if (str[0] == ' ')
+			{
+				for (int i = 0; i <= len; i++)
+				{
+					str[len] = str[len + 1];
+				}
+				len--;
+			}
+
+			mass_len = (int*)realloc(mass_len, (n + 1) * sizeof(int));
+			mass_len[n] = len;
+
+			mass_str = (char**)realloc(mass_str, (n + 1) * sizeof(char*));
+			mass_str[n] = (char*)malloc(mass_str, len * sizeof(char));
+			for (int i = 0; i <= len; i++)
+			{
+				mass_str[n][i] = str[i];
+			}
+
+			n++;
+		}
 	}
 
 	for (int i = 0; i <= n; i++)
