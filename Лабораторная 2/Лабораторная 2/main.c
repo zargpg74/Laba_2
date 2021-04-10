@@ -52,7 +52,7 @@ void main()
 			str = NULL;
 		}
 
-		symbol = fgetc(book);
+		symbol = fgetc(book);//читаем следующий символ из файла
 
 		if (symbol == '/')//если конец файла то записываем последнюю строку
 		{
