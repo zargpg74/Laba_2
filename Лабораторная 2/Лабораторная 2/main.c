@@ -79,4 +79,15 @@ void main()
 		}
 		printf("\n");
 	}
+
+	err = fclose(book);//закрываем файл
+	ErrorOpen(err);
+
+	free(str);//очищаем все массивы
+	for (int i = 0; i < n; i++)
+	{
+		free(mass_str[i]);
+	}
+	free(mass_str);
+	free(mass_len);
 }
