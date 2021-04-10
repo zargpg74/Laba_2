@@ -37,15 +37,6 @@ void main()
 		}
 		else
 		{
-			if (str[0] == ' ')//если в начале строки пробел удаляем его
-			{
-				for (int i = 0; i <= len; i++)
-				{
-					str[len] = str[len + 1];
-				}
-				len--;
-			}
-
 			mass_len = (int*)realloc(mass_len, (n + 1) * sizeof(int));//записываем длинну строки
 			mass_len[n] = len;
 
@@ -65,14 +56,6 @@ void main()
 
 		if (symbol == '/')//если конец файла то записываем последнюю строку
 		{
-			if (str[0] == ' ')
-			{
-				for (int i = 0; i <= len; i++)
-				{
-					str[len] = str[len + 1];
-				}
-				len--;
-			}
 
 			mass_len = (int*)realloc(mass_len, (n + 1) * sizeof(int));
 			mass_len[n] = len;
