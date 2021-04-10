@@ -29,7 +29,7 @@ void main()
 	symbol = fgetc(book);
 	while (symbol != '/')
 	{
-		if (symbol != '\n')
+		if (symbol != '\n')//пока не встретился перенос записываем символы в строку
 		{
 			str = (char*)realloc(str, (len + 1) * sizeof(char));
 			str[len] = symbol;
@@ -37,7 +37,7 @@ void main()
 		}
 		else
 		{
-			if (str[0] == ' ')
+			if (str[0] == ' ')//если перед строкой есть пробел удаляем
 			{
 				for (int i = 0; i <= len; i++)
 				{
@@ -46,10 +46,10 @@ void main()
 				len--;
 			}
 
-			mass_len = (int*)realloc(mass_len, (n + 1) * sizeof(int));
+			mass_len = (int*)realloc(mass_len, (n + 1) * sizeof(int));//записываем длинну строки
 			mass_len[n] = len;
 
-			mass_str = (char**)realloc(mass_str, (n + 1) * sizeof(char*));
+			mass_str = (char**)realloc(mass_str, (n + 1) * sizeof(char*));//выделяем память под строку в массиве
 			mass_str[n] = (char*)malloc(mass_str, len * sizeof(char));
 			for (int i = 0; i <= len; i++)
 			{
@@ -63,7 +63,7 @@ void main()
 
 		symbol = fgetc(book);
 
-		if (symbol == '/')
+		if (symbol == '/')//если конец файла записываем последнюю строку
 		{
 			if (str[0] == ' ')
 			{
