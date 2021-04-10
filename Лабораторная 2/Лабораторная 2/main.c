@@ -80,6 +80,10 @@ void main()
 		printf("\n");
 	}
 
+	//начинаем сортировку
+	printf("Отсортированный текст\n");
+
+
 	err = fclose(book);//закрываем файл
 	ErrorOpen(err);
 
