@@ -140,18 +140,4 @@ void main()
 
 	err = fclose(book);//закрываем файл
 	ErrorOpen(err);
-
-	free(str);//очищаем все массивы
-	for (int i = 0; i < n; i++)
-	{
-		free(mass_str[i]);
-	}
-	free(mass_str);
-	for (int i = 0; i <= n; i++)
-	{
-		free(mass_str2[i]);
-	}
-	free(mass_str2);
-	free(mass_len);
-
 }
