@@ -71,18 +71,72 @@ void main()
 		}
 	}
 
+
+	//начинаем сортировку
+	int max = 0;//гаходим максимальную длину
+	for (int i = 0; i <= n; i++)
+	{
+		if (mass_len[i] > max)
+			max = mass_len[i];
+	}
+
+	char** mass_str2 = (char**)malloc(n * sizeof(char*));//создаем новый массив с одинаковой длинной строк для удобства записи
+	for (int i = 0; i <= n; i++)
+	{
+		mass_str2[i] = (char*)malloc(max * sizeof(char));
+	}
+
+	for (int i = 0; i <= n; i++)//записываем в новый массив значения исходного
+	{
+		for (int j = 0; j < mass_len[i]; j++)
+		{
+			mass_str2[i][j] = mass_str[i][j];
+		}
+	}
+
+	//сортировка
+	str = (char*)malloc(max * sizeof(char));
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i + 1; j <= n; j++)
+		{
+			if (mass_len[i] > mass_len[j])
+			{
+				//x=a[i]
+				for (int k = 0; k < max; k++)
+				{
+					str[k] = mass_str2[i][k];
+				}
+
+				//a[i]=a[j]
+				for (int k = 0; k < max; k++)
+				{
+					mass_str2[i][k] = mass_str2[j][k];
+				}
+
+				//a[j]=x
+				for (int k = 0; k < max; k++)
+				{
+					mass_str2[j][k] = str[k];
+				}
+
+				//так же меняем местами длины строк
+				int x = mass_len[i];
+				mass_len[i] = mass_len[j];
+				mass_len[j] = x;
+			}
+		}
+	}
+
+	//выводим массив
 	for (int i = 0; i <= n; i++)
 	{
 		for (int j = 0; j < mass_len[i]; j++)
 		{
-			printf("%c", mass_str[i][j]);
+			printf("%c", mass_str2[i][j]);
 		}
 		printf("\n");
 	}
-
-	//начинаем сортировку
-	printf("Отсортированный текст\n");
-
 
 	err = fclose(book);//закрываем файл
 	ErrorOpen(err);
@@ -93,5 +147,11 @@ void main()
 		free(mass_str[i]);
 	}
 	free(mass_str);
+	for (int i = 0; i <= n; i++)
+	{
+		free(mass_str2[i]);
+	}
+	free(mass_str2);
 	free(mass_len);
+
 }
