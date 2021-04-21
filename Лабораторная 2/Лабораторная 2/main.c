@@ -21,7 +21,7 @@ void main()
 	ErrorFile(book);
 	rewind(book);
 
-	Sort(book);
+	Sort(book);//функиц€ дл€ сортировки строк из файла
 
 	err = fclose(book);//закрываем файл
 	ErrorOpen(err);
