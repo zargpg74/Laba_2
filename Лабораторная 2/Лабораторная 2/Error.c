@@ -3,7 +3,7 @@
 
 #include "Error.h"
 
-void ErrorOpen(errno_t err) {//ф-я обработки ошибок открытия
+void ErrorOpen(errno_t err) {
 	if (err != 0) {
 		char error_str[100];
 		strerror_s(error_str, sizeof(error_str), err);
@@ -13,11 +13,11 @@ void ErrorOpen(errno_t err) {//ф-я обработки ошибок открытия
 }
 
 
-void ErrorFile(FILE* input) {//ф-я обработки ошибок файла
+void ErrorFile(FILE* input) {
 	char pr;
 	pr = getc(input);
 	if (pr == EOF) {
-		printf("Файл пуст");
+		printf("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ");
 		exit(4);
 	}
 }
