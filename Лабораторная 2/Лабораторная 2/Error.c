@@ -3,7 +3,7 @@
 
 #include "Error.h"
 
-void ErrorOpen(errno_t err) {
+void ErrorOpen(errno_t err) {//обработка ошибок открытия файла
 	if (err != 0) {
 		char error_str[100];
 		strerror_s(error_str, sizeof(error_str), err);
@@ -13,7 +13,7 @@ void ErrorOpen(errno_t err) {
 }
 
 
-void ErrorFile(FILE* input) {
+void ErrorFile(FILE* input) {//проверка пуст ли файл 
 	char pr;
 	pr = getc(input);
 	if (pr == EOF) {
